@@ -17,39 +17,22 @@ The goal of this experiment was to build a simple deep learning model to classif
 To understand how well the model performs, I use several standard metrics. Imagine I am trying to identify pictures of cats.
 
 - **Accuracy**: This is the most intuitive metric. It simply measures the ratio of correct predictions to the total number of predictions.
+  - **Analogy**: If there were shown 100 images and correctly identified 95 of them (whether there were cats or not cats), the accuracy is 95%.
   
-  - **Analogy**: If you were shown 100 images and correctly identified 95 of them (whether they were cats or not cats), your accuracy is 95%.
+  - **Formula**: **Accuracy = (TruePositives + TrueNegatives​) / TotalPredictions**
   
-  - **Formula**: Accuracy = (TruePositives + TrueNegatives​) / TotalPredictions
-
 - **Precision**: This metric answers the question: "Of all the times the model predicted a specific class, how often was it correct?" It's a measure of exactness.
-  
   - **Analogy**: Of all the images your model labeled as "cat," how many were actually cats? High precision means the model is trustworthy when it makes a positive prediction.
   
-  - Formula: Precision = TruePositives / (TruePositives + FalsePositives)
-
+  - Formula: **Precision = TruePositives / (TruePositives + FalsePositives)**
+  
 - **Recall (Sensitivity)**: This metric answers the question: "Of all the actual instances of a class, how many did the model correctly identify?" It's a measure of completeness.
+  - **Analogy**: Of all the actual cat images in the dataset, how many did the model successfully find? High recall means the model is good at finding all instances of a class.
   
-  - **Analogy**: Of all the actual cat images in the dataset, how many did your model successfully find? High recall means the model is good at finding all instances of a class.
+  - **Formula**: **Recall = TruePositives / (TruePositives + FalseNegatives)**
   
-  - **Formula**: Recall = TruePositives / (TruePositives + FalseNegatives)
-
 - **AUC (Area Under the ROC Curve)**: The ROC curve plots the True Positive Rate (Recall) against the False Positive Rate at various threshold settings. The **AUC** represents the area under this curve.
-  
   - **Analogy**: Think of AUC as a single score that summarizes the model's ability to distinguish between classes. An AUC of **1.0** means the model can perfectly separate the classes. An AUC of **0.5** means the model is no better than random guessing. It's a great overall measure of a classifier's performance.
-
-## Experimental Results
-
-The model was trained for 50 epochs and evaluated on the test set. The following results were achieved.
-
-| Metric    | Score             |
-| --------- | ----------------- |
-| Accuracy  | 0.978 (or 97.8%)  |
-| Precision | 0.979 (Macro Avg) |
-| Recall    | 0.979 (Macro Avg) |
-| AUC (OvR) | 0.999             |
-
-**Observation**: The model performed exceptionally well, with scores close to perfect. This is expected as the Iris dataset is relatively simple and the classes are well-separated. For more complex datasets like "Adult," achieving such high scores would be much more challenging, and the trade-off between precision and recall would become more significant.
 
 ## Source Code
 
@@ -209,30 +192,19 @@ Confusion Matrix:
 
 ```
 
+## My Test Output
 
+![result](./assets/result.png)
 
+## Experimental Results & Observation
 
+The model was trained for 50 epochs and evaluated on the test set. The following results were achieved.
 
+| Metric                | Score |
+| --------------------- | ----- |
+| Accuracy              | 1     |
+| Precision (Macro Avg) | 1     |
+| Recall (Macro Avg)    | 1     |
+| AUC (One-vs-Reset)    | 1     |
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+**Observation**: The model performed exceptionally well, with scores close to perfect. This is expected as the Iris dataset is relatively simple and the classes are well-separated. For more complex datasets like "Adult," achieving such high scores would be much more challenging, and the trade-off between precision and recall would become more significant.
